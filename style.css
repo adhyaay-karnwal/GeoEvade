@@ -1,0 +1,163 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background-color: black;
+}
+
+.screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  height: 100vh;
+  z-index: 2; /* Ensure the start screen is above everything */
+}
+
+h1 {
+  font-size: 4rem;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+  font-family: 'Varela Round';
+}
+
+h2, h3 {
+  color: white;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.81);
+  font-family: 'Varela Round';
+}
+
+p {
+  margin-bottom: 100px;
+  font-family: 'Varela Round';
+}
+
+button {
+  font-family: 'Varela Round';
+  padding: 15px 30px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+.hidden {
+  display: none;
+}
+
+#game-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: black; /* Set background color */
+}
+
+.grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(white 1px, transparent 1px),
+                    linear-gradient(90deg, white 1px, transparent 1px);
+  background-size: 30px 30px; /* Adjust size as needed */
+  opacity: 0.5;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 20px white;
+}
+
+.game {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.player {
+  position: absolute;
+  width: 10vw; /* Adjust for responsive sizing */
+  height: 10vw; /* Adjust for responsive sizing */
+  max-width: 50px; /* Ensure it doesn't get too big */
+  max-height: 50px; /* Ensure it doesn't get too big */
+  background-color: white; /* Player color changed to white */
+  border-radius: 50%;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.8); /* Adjusted shadow for visibility */
+}
+
+.obstacle {
+  position: absolute;
+  top: 0;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.floating-obstacles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Prevent interaction */
+}
+
+.floating-obstacle {
+  position: absolute;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+  animation: float 5s infinite alternate;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-10px); }
+}
+
+.score-board {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  color: white;
+  font-size: 24px;
+}
+
+/* Add glowing effect to player and obstacles */
+.player, .obstacle {
+  border: 3px solid white;
+}
+
+/* Responsive design for mobile screens */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 3rem;
+  }
+
+  button {
+    font-size: 18px;
+    padding: 12px 24px;
+  }
+
+  .score-board {
+    font-size: 20px;
+  }
+}
